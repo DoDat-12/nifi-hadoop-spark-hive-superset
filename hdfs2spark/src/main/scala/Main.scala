@@ -5,6 +5,7 @@ import org.apache.spark.sql.functions._
 
 object Main {
   def main(/*args: Array[String]*/): Unit = {
+//    spark-shell already has SparkSession spark
 //    val spark = SparkSession.builder()
 //      .appName("job02")
 //      .master("local[*]")
