@@ -1,11 +1,6 @@
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/big-data-europe/Lobby)
 
-# Docker multi-container environment with Hadoop, Spark and Hive
-
-This is it: a Docker multi-container environment with Hadoop (HDFS), Spark and Hive. But without the large memory requirements of a Cloudera sandbox. (On my Windows 10 laptop (with WSL2) it seems to consume a mere 3 GB.)
-
-The only thing lacking, is that Hive server doesn't start automatically. To be added when I understand how to do that in docker-compose.
-
+# Docker multi-container environment with Nifi, Hadoop, Spark, Hive and Superset
 
 ## Quick Start
 
