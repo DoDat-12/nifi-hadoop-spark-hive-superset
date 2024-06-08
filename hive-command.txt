@@ -1,0 +1,240 @@
+docker exec -it hive-server bash
+
+hiveserver2
+
+netstat -anp | grep 10000
+
+beeline -u jdbc:hive2://localhost:10000 -n root
+
+!connect jdbc:hive2://127.0.0.1:10000 scott tiger
+
+show databases;
+
+create database crashlogs;
+
+use crashlogs;
+
+--------------------------------------------------------DAY-------------------------------------------------------------
+------------ /output/day/crash ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS crash_day(
+    date_log DATE,
+    application VARCHAR(50),
+    crash_type VARCHAR(10),
+    number_of_crashes INT,
+    crashed_users INT,
+    crashed_devices INT,
+    number_of_issues INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/day/crash'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/day/app ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS app_day(
+    date_log DATE,
+    application VARCHAR(50),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/day/app'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/day/device ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS device_day(
+    date_log DATE,
+    application VARCHAR(50),
+    device VARCHAR(30),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/day/device'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/day/os ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS os_day(
+    date_log DATE,
+    application VARCHAR(50),
+    os VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/day/os'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/day/issue ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS issue_day(
+    date_log DATE,
+    application VARCHAR(50),
+    issue VARCHAR(200),
+    blame_frame VARCHAR(200),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/day/issue'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+--------------------------------------------------------WEEK------------------------------------------------------------
+------------ /output/week/crash ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS crash_week(
+    week_log INT,
+    application VARCHAR(50),
+    crash_type VARCHAR(10),
+    number_of_crashes INT,
+    crashed_users INT,
+    crashed_devices INT,
+    number_of_issues INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/week/crash'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/week/app ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS app_week(
+    week_log INT,
+    application VARCHAR(50),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/week/app'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/week/device ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS device_week(
+    week_log INT,
+    application VARCHAR(50),
+    device VARCHAR(30),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/week/device'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/week/os --------------
+CREATE EXTERNAL TABLE IF NOT EXISTS os_week(
+    week_log INT,
+    application VARCHAR(50),
+    os VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/week/os'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/week/issue ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS issue_week(
+    week_log DATE,
+    application VARCHAR(50),
+    issue VARCHAR(200),
+    blame_frame VARCHAR(200),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/week/issue'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+-------------------------------------------------------MONTH------------------------------------------------------------
+------------ /output/month/crash ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS crash_month(
+    month_log INT,
+    application VARCHAR(50),
+    crash_type VARCHAR(10),
+    number_of_crashes INT,
+    crashed_users INT,
+    crashed_devices INT,
+    number_of_issues INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/month/crash'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/month/app ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS app_month(
+    month_log INT,
+    application VARCHAR(50),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/month/app'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/month/device ------------
+CREATE EXTERNAL TABLE IF NOT EXISTS device_month(
+    month_log INT,
+    application VARCHAR(50),
+    device VARCHAR(30),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/month/device'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/month/os ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS os_month(
+    month_log INT,
+    application VARCHAR(50),
+    os VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/month/os'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+------------ /output/week/issue ---------------
+CREATE EXTERNAL TABLE IF NOT EXISTS issue_month(
+    month_log DATE,
+    application VARCHAR(50),
+    issue VARCHAR(200),
+    blame_frame VARCHAR(200),
+    version VARCHAR(10),
+    crashes INT,
+    users INT
+    )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+location '/output/month/issue'
+TBLPROPERTIES ("skip.header.line.count"="1");
