@@ -150,7 +150,7 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 ------------ /output/week/issue ---------------
 CREATE EXTERNAL TABLE IF NOT EXISTS issue_week(
-    week_log DATE,
+    week_log INT,
     application VARCHAR(50),
     issue VARCHAR(200),
     blame_frame VARCHAR(200),
@@ -225,7 +225,7 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 ------------ /output/week/issue ---------------
 CREATE EXTERNAL TABLE IF NOT EXISTS issue_month(
-    month_log DATE,
+    month_log INT,
     application VARCHAR(50),
     issue VARCHAR(200),
     blame_frame VARCHAR(200),

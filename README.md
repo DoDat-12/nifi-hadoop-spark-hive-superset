@@ -54,7 +54,7 @@ To run job
   Main.main()
 ```
 
-## Quick Start Hive
+## Start Hive
 
 Go to the command line of the Hive server and start hiveserver2
 ```
@@ -121,3 +121,7 @@ And have a little select statement going.
 ```
 
 See all the table in hive-command.txt
+
+## Start Superset
+
+Run `docker network inspect` on the network (e.g. `docker-hadoop-spark-hive_default`) to get hostname of Apache Hive (used for connecting Superset)
